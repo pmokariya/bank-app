@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+<div class="pull-right">
+	<h4>
+		<%= link_to 'Back', transactions_path %>
+	</h4>
+</div>
+<p>
+  <strong>Price:</strong>
+  Rs. <%= @transaction.price %>
+</p>
+
+<p>
+  <strong>Msg:</strong>
+  <%= @transaction.msg %>
+</p>
+
+<p>
+  <strong>From Account:</strong>
+  <%= Account.find(@transaction.from_account).name %>
+</p>
+
+<p>
+  <strong>To Account:</strong>
+  <%= Account.find(@transaction.to_account).name %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @transaction.user.email %>
+</p>
+
+<%#= link_to 'Edit', edit_transaction_path(@transaction) %> 

@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+<div class="pull-right">
+  <h4>
+	<%= link_to 'Check Blanace', account_check_current_balance_path(@account) %> |
+	<%= link_to 'Deposit money', account_deposit_money_path(@account,key: "deposit") %> |
+	<%= link_to 'Withdraw money', account_deposit_money_path(@account,key: "withdraw") %> |
+	<%#= link_to 'Transfer money', edit_account_path(@account) %>
+	<%#= link_to 'Edit', edit_account_path(@account) %> 
+	<%= link_to 'Back', root_path %>
+	</h4>
+</div>
+<p>
+  <strong>Name:</strong>
+  <%= @account.name %>
+</p>
+
+<p>
+  <strong>Balance:</strong>
+  Rs. <%= @account.balance %>
+</p>
+ 
+<p>
+  <strong>User:</strong>
+  <%= @account.user.email %>
+</p>
+

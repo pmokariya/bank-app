@@ -1,25 +1,15 @@
-# README
+# Bank Application
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a Simple Web Application where an user can:
 
-Things you may want to cover:
+* Self Sign up to Open(create) Account
+* Deposit money
+* Get the current balance
+* With positive balance a. Withdraw money b. Transfer money to another account
+* View statement of transactions like we receive from Bank
 
-* Ruby version
+Technology :
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-# bank-app
+* ruby '2.5.1'
+* rails '5.2.3'
+* sqlite3

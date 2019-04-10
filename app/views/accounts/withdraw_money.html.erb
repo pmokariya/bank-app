@@ -1,0 +1,36 @@
+<%#= form_for @account, :url =>{:action => "account_deposit_money", :id =>@account.id} do |form| %>
+ | <%= link_to 'Back', account_path(@account) %>
+
+<p>
+  <strong>Balance:</strong>
+  <%= @account.balance %>
+</p>
+
+<%= form_for(@account, url: account_withdraw_money_path) do |form| %>
+  <% if @account.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@account.errors.count, "error") %> prohibited this @account from being saved:</h2>
+
+      <ul>
+      <% @account.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <div class="field">
+    <%= form.label :add_money %>
+    <%= form.text_field :add_money %>
+  </div>
+
+  <div class="field">
+    <%#= form.label :user_id %>
+    <%= form.hidden_field :user_id,:value => current_user.id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

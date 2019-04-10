@@ -1,0 +1,38 @@
+<p id="notice"><%= notice %></p>
+<div class="pull-right">
+  <h4>
+  <%= link_to 'See all Transactions', transactions_path %> | 
+  <%= link_to 'Transfer money', new_transaction_path %> | 
+  <%= link_to 'New Account', new_account_path %>
+  </h4>
+</div>
+<h3>Accounts</h3>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Balance</th>
+      <th>User</th>
+      <th colspan="3">
+        Actions
+      </th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @accounts.each do |account| %>
+      <tr>
+        <td><%= account.name %></td>
+        <td>Rs. <%= account.balance %></td>
+        <td><%= account.user.email %></td>
+        <td><%= link_to 'Show', account %></td>
+        <td><%#= link_to 'Edit', edit_account_path(account) %></td>
+        <td><%= link_to 'Destroy', account, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
