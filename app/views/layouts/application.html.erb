@@ -4,15 +4,12 @@
     <title>BankApp</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
   </head>
-
   <body>
     <div class="container">
       <nav class="navbar navbar-inverse">
@@ -20,7 +17,6 @@
           <div class="navbar-header">
             <a class="navbar-brand" href="#">Bank App</a>
           </div>
-          
           <ul class="nav navbar-nav navbar-right">
             <% if user_signed_in? %>
               <li>
@@ -49,12 +45,6 @@
           </ul>
         </div>
       </nav>
-
-      <!-- <h1>Welcome to Bank App</h1> -->
-
-     <!--  <p class="notice"><%#= notice %></p>
-      <p class="alert"><%#= alert %></p> -->
-      
       <%= yield %>
     </div>
   </body>

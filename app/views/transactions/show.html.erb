@@ -4,6 +4,17 @@
 		<%= link_to 'Back', transactions_path %>
 	</h4>
 </div>
+
+<p>
+  <strong>Account Nmber:</strong>
+  <%= @transaction.account_number %>
+</p>
+
+<p>
+  <strong>Account holder name:</strong>
+  <%= @transaction.account_holder_name %>
+</p>
+ 
 <p>
   <strong>Price:</strong>
   Rs. <%= @transaction.price %>
@@ -12,16 +23,6 @@
 <p>
   <strong>Msg:</strong>
   <%= @transaction.msg %>
-</p>
-
-<p>
-  <strong>From Account:</strong>
-  <%= Account.find(@transaction.from_account).name %>
-</p>
-
-<p>
-  <strong>To Account:</strong>
-  <%= Account.find(@transaction.to_account).name %>
 </p>
 
 <p>

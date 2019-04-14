@@ -1,9 +1,8 @@
-<%#= form_for @account, :url =>{:action => "account_deposit_money", :id =>@account.id} do |form| %>
- | <%= link_to 'Back', account_path(@account) %>
+<%= link_to 'Back', account_path(@account) %>
 
 <p>
   <strong>Balance:</strong>
-  <%= @account.balance %>
+  <%= @account.amount %>
 </p>
 
 <%= form_for(@account, url: account_withdraw_money_path) do |form| %>
@@ -19,14 +18,12 @@
     </div>
   <% end %>
 
-
   <div class="field">
     <%= form.label :add_money %>
     <%= form.text_field :add_money %>
   </div>
 
   <div class="field">
-    <%#= form.label :user_id %>
     <%= form.hidden_field :user_id,:value => current_user.id %>
   </div>
 

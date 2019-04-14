@@ -3,6 +3,19 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-   has_many :accounts
-   has_many :transactions
+
+  has_one :account
+  has_many :transactions
+
+  after_create :create_account
+
+  def create_account
+    Account.create(
+      user_id: self.id,
+      account_holder_name: self.email.split('@')[0],
+      account_number: rand(10 ** 10).to_s.rjust(16,'0'),
+      account_type: "saving", 
+      amount: "0.0",
+    )
+	end
 end

@@ -2,8 +2,8 @@ Rails.application.routes.draw do
   resources :transactions
   resources :accounts  do
   	get 'check_current_balance', to: 'accounts#check_current_balance'
-  	get 'deposit_money', to: 'accounts#deposit_money'
-  	patch 'deposit_money', to: 'accounts#deposit_money'
+  	get 'deposit_withdraw_money', to: 'accounts#deposit_withdraw_money'
+  	patch 'deposit_withdraw_money', to: 'accounts#deposit_withdraw_money'
   end
   root to: "accounts#index"
   devise_for :users

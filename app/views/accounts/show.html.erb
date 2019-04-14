@@ -1,26 +1,28 @@
 <p id="notice"><%= notice %></p>
 <div class="pull-right">
   <h4>
-	<%= link_to 'Check Blanace', account_check_current_balance_path(@account) %> |
-	<%= link_to 'Deposit money', account_deposit_money_path(@account,key: "deposit") %> |
-	<%= link_to 'Withdraw money', account_deposit_money_path(@account,key: "withdraw") %> |
-	<%#= link_to 'Transfer money', edit_account_path(@account) %>
-	<%#= link_to 'Edit', edit_account_path(@account) %> 
+	<%= link_to 'Check Blanace', account_check_current_balance_path(@account,id: @account.id) %> |
+	<%= link_to 'Deposit money', account_deposit_withdraw_money_path(@account,key: "deposit") %> |
+	<%= link_to 'Withdraw money', account_deposit_withdraw_money_path(@account,key: "withdraw") %> |
 	<%= link_to 'Back', root_path %>
 	</h4>
 </div>
 <p>
-  <strong>Name:</strong>
-  <%= @account.name %>
+  <strong>Account Holder Name:</strong>
+  <%= @account.account_holder_name %>
+</p>
+
+<p>
+  <strong>Account Number:</strong>
+  <%= @account.account_number %>
+</p>
+
+<p>
+  <strong>Account type:</strong>
+  <%= @account.account_type %>
 </p>
 
 <p>
   <strong>Balance:</strong>
-  Rs. <%= @account.balance %>
+  Rs. <%= @account.amount %>
 </p>
- 
-<p>
-  <strong>User:</strong>
-  <%= @account.user.email %>
-</p>
-

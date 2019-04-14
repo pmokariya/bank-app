@@ -1,14 +1,13 @@
-<%#= form_for @account, :url =>{:action => "account_deposit_money", :id =>@account.id} do |form| %>
 <div class="pull-right">
   <h4> <%= link_to 'Back', account_path(@account) %> </h4>
 </div>
 
 <p>
   <strong>Balance:</strong>
-  Rs. <%= @account.balance %>
+  Rs. <%= @account.amount %>
 </p>
 
-<%= form_for(@account, url: account_deposit_money_path) do |form| %>
+<%= form_for(@account, url: account_deposit_withdraw_money_path) do |form| %>
   <% if @account.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@account.errors.count, "error") %> prohibited this @account from being saved:</h2>
@@ -23,11 +22,10 @@
 
   <div class="field">
     <%= form.label :money %>
-    <%= form.text_field :money %>
+    <%= form.text_field :money , :required => true  %>
   </div>
 
   <div class="field">
-    <%#= form.label :user_id %>
     <%= form.hidden_field :key,:value => params[:key] %>
     <%= form.hidden_field :user_id,:value => current_user.id %>
   </div>
