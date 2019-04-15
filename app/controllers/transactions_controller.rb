@@ -16,11 +16,10 @@ class TransactionsController < ApplicationController
 
   def create
     @transaction = Transaction.new(transaction_params)
-    from_account = current_user.account
-    to_account = Account.find_by(account_number: params[:transaction][:account_number])
-    @transaction.account_id = to_account.id
     respond_to do |format|
       if @transaction.save
+        from_account = current_user.account
+        to_account = Account.find_by(account_number: params[:transaction][:account_number])
         if from_account.amount > params[:transaction][:price].to_s.to_d 
           from_account.withdraw_money(params[:transaction][:price],current_user)
           to_account.deposit_money(params[:transaction][:price],current_user)
@@ -43,6 +42,6 @@ class TransactionsController < ApplicationController
     end
 
     def transaction_params
-      params.require(:transaction).permit(:price, :msg, :account_id, :user_id,:account_number,:account_holder_name)
+      params.require(:transaction).permit(:price,:account_number,:account_holder_name, :msg, :account_id, :user_id)
     end
 end

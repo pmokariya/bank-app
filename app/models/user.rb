@@ -10,10 +10,10 @@ class User < ApplicationRecord
   after_create :create_account
 
   def create_account
-    Account.create(
+    a = Account.create(
       user_id: self.id,
       account_holder_name: self.email.split('@')[0],
-      account_number: rand(10 ** 10).to_s.rjust(16,'0'),
+      account_number: SecureRandom.random_number(10**10).to_s.rjust(16,'0'),
       account_type: "saving", 
       amount: "0.0",
     )

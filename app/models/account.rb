@@ -15,11 +15,15 @@ class Account < ApplicationRecord
 
   def withdraw_money(money,current_user)
     if self.amount > money.to_d 
-    	self.amount = self.amount - money.to_d 
-    	self.save
-      Transaction.create(price: money , msg: "withdraw" , account_number: self.account_number,account_holder_name: current_user.email.split("@")[0], account_id: self.id , user_id: current_user.id )
+      transaction = Transaction.create(price: money , msg: "withdraw" , account_number: self.account_number,account_holder_name: current_user.email.split("@")[0], account_id: self.id , user_id: current_user.id )
+      if transaction.save
+        self.amount = self.amount - money.to_d 
+        self.save
+      else
+        errors.add("Something is wrong.")
+      end
     else
-      errors.add(:amount,"You don't have enough balance in your account.")
+      errors.add("You don't have enough balance in your account.")
     end
   end
 end
