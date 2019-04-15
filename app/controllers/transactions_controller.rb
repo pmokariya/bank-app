@@ -3,8 +3,9 @@ class TransactionsController < ApplicationController
   before_action :set_transaction, only: [:show, :edit, :update, :destroy]
 
   def index
-    @transactions = current_user.account.transactions.all + current_user.transactions.all
-    @transactions = @transactions.uniq.sort_by { |item| item.created_at }.reverse
+    @transactions = current_user.transactions.all.order("created_at DESC")
+    # @transactions = current_user.account.transactions.all + current_user.transactions.all
+    # @transactions = @transactions.uniq.sort_by { |item| item.created_at }.reverse
   end
 
   def show
